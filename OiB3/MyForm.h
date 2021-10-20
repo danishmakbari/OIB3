@@ -17,6 +17,7 @@ namespace Project1 {
 	using namespace System::Data;
 	using namespace System::Drawing;
 	using namespace System::Text::RegularExpressions;
+	using namespace System::Globalization;
 
 	/// <summary>
 	/// Сводка для MyForm
@@ -368,6 +369,7 @@ namespace Project1 {
 			this->MaximizeBox = false;
 			this->Name = L"MyForm";
 			this->Text = L"Генератор пароля";
+			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			this->groupBox2->ResumeLayout(false);
@@ -383,7 +385,10 @@ namespace Project1 {
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		double P, V, T, S;
 		long long A, L, Sstar;
-		Regex^ numberPattern = gcnew Regex("^([0-9]+(\.|,)[0-9]+|[0-9]+)$");
+		NumberFormatInfo^ nfi = NumberFormatInfo::CurrentInfo;
+		Char ds = nfi->NumberDecimalSeparator[0];
+		String^ DS = ds.ToString();
+		Regex^ numberPattern = gcnew Regex("^([0-9]+" + DS + "[0-9]+|[0-9]+)$");
 
 		if (!numberPattern->Match(textBox1->Text)->Success || !numberPattern->Match(textBox2->Text)->Success || !numberPattern->Match(textBox3->Text)->Success) {
 			MessageBox::Show("Ошибка. Вводите только числа", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
@@ -416,6 +421,13 @@ namespace Project1 {
 			MessageBox::Show("P, V и T должны быть больше нуля", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			return;
 		}
+
+		if (P > 1) {
+			MessageBox::Show("Вероятность не может быть больше 1", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+
+
 		S = V * T / P;
 		Sstar = Math::Ceiling(S);
 
@@ -447,6 +459,15 @@ namespace Project1 {
 		label8->Text = A.ToString();
 		label9->Text = L.ToString();
 	}
+
+
+
+private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
+	NumberFormatInfo^ nfi = NumberFormatInfo::CurrentInfo;
+	Char ds = nfi->NumberDecimalSeparator[0];
+	String^ DS = ds.ToString();
+	textBox1->Text = "0" + DS + "0001";
+}
 
 };
 }

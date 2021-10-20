@@ -1,8 +1,7 @@
 ﻿  MyForm.cpp
-C:\Users\Admin\Desktop\oib\OiB3\MyForm.h(386,38): warning C4129: .: неизвестная escape-последовательность
-C:\Users\Admin\Desktop\oib\OiB3\MyForm.h(420,24): warning C4244: =: преобразование "double" в "__int64", возможна потеря данных
-C:\Users\Admin\Desktop\oib\OiB3\MyForm.h(422,34): warning C4244: аргумент: преобразование "__int64" в "double", возможна потеря данных
-C:\Users\Admin\Desktop\oib\OiB3\MyForm.h(422,20): warning C4244: =: преобразование "double" в "__int64", возможна потеря данных
-C:\Users\Admin\Desktop\oib\OiB3\MyForm.h(424,13): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\Admin\Desktop\oib\OiB3\MyForm.h(432,24): warning C4244: =: преобразование "double" в "__int64", возможна потеря данных
+C:\Users\Admin\Desktop\oib\OiB3\MyForm.h(434,34): warning C4244: аргумент: преобразование "__int64" в "double", возможна потеря данных
+C:\Users\Admin\Desktop\oib\OiB3\MyForm.h(434,20): warning C4244: =: преобразование "double" в "__int64", возможна потеря данных
+C:\Users\Admin\Desktop\oib\OiB3\MyForm.h(436,13): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
   MyForm.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
   Project1.vcxproj -> C:\Users\Admin\Desktop\oib\OiB3\Debug\Project1.exe
